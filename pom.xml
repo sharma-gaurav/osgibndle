@@ -17,16 +17,34 @@
                 <artifactId>maven-bundle-plugin</artifactId>
                 <version>4.1.0</version>
                 <extensions>true</extensions>
+
+                <configuration>
+                    <instructions>
+                        <!--
+                        <Embed-Dependency>
+                            artifactId1,
+                            artifactId2;inline=true
+                        </Embed-Dependency>
+                        -->
+                        <Sling-Model-Packages>
+                            com.mli.neo.chassis.core
+                        </Sling-Model-Packages>
+                        <!--<Embed-Dependency>gson,jackson-core,jackson-databind,jackson-annotations,jackson-dataformat-csv,commons-logging,pdfbox,fontbox,OSGI-INF/lib,pgichecksum,bcprov-jdk15on</Embed-Dependency>-->
+                        <!-- Import any version of javax.inject, to allow running on multiple versions of AEM -->
+                        <Import-Package>*</Import-Package>
+                        <Export-Package>com.demo.*</Export-Package>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
 
     </build>
     <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-            <version>6.0.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.osgi</groupId>-->
+            <!--<artifactId>org.osgi.core</artifactId>-->
+            <!--<version>6.0.0</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.osgi</groupId>
@@ -53,11 +71,5 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 </project>
